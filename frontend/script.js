@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const API = "/api";
 
 // =====================================
@@ -1599,4 +1598,3 @@ document.getElementById("trackName").addEventListener("input", () => {
         document.getElementById("complaintMsg").innerText = "";
     });
 });
->>>>>>> 52ebb8c0daac9c8d02f93fdd6a854ee55ce01565
