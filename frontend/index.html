@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html lang="en">
@@ -300,3 +301,189 @@
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Student Bus System</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Smart Student Bus System</h1>
+    <p>Student Bus Concession and Complaint Management System</p>
+</header>
+<nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('register')">Register</button>
+    <button onclick="showPage('apply')">Apply Concession</button>
+    <button onclick="showPage('status')">Track Status</button>
+    <button onclick="showPage('dashboard')">Student Dashboard</button>
+    <button onclick="showPage('complaint')">Complaint</button>
+    <button onclick="showPage('admin')">Admin</button>
+</nav>
+<!-- HOME PAGE -->
+<div id="home" class="page active">
+    <h2>Welcome Student!</h2>
+<div class="card">
+    <h3>Bus Concession</h3>
+    <p>Apply for bus concession online.</p>
+    <button onclick="showPage('apply')">Apply Now</button>
+</div>
+<div class="card">
+    <h3>Register Complaint</h3>
+    <p>Report bus-related problems.</p>
+    <button onclick="showPage('complaint')">Raise Complaint</button>
+</div>
+<div class="card">
+    <h3>Track Application</h3>
+    <p>Check your concession application status.</p>
+    <button onclick="showPage('status')">Check Status</button>
+</div>
+</div>
+<!-- REGISTER PAGE -->
+<div id="register" class="page">
+    <h2>Student Registration</h2>
+<div class="card">
+    <input id="regName" placeholder="Full Name">
+    <input id="regCollege" placeholder="College Name">
+    <input id="regPhone" placeholder="Phone Number">
+    <input id="regEmail" type="email" placeholder="Email Address">
+    <button onclick="registerStudent()">Register</button>
+    <p id="registerMsg"></p>
+</div>
+</div>
+<!-- APPLY CONCESSION PAGE -->
+<div id="apply" class="page">
+    <h2>Apply for Bus Concession</h2>
+<div class="card">
+    <input id="sName" placeholder="Student Name">
+    <input id="sCollege" placeholder="College Name">
+    <input id="sFrom" placeholder="From">
+    <input id="sTo" placeholder="To">
+    <button onclick="applyConcession()">Submit Application</button>
+    <p id="applyMsg"></p>
+</div>
+</div>
+<!-- TRACK STATUS PAGE -->
+<div id="status" class="page">
+    <h2>Track Application Status</h2>
+<div class="card">
+    <input id="trackName" placeholder="Enter Student Name">
+    <button onclick="trackStatus()">Check Status</button>
+    <div id="trackResult"></div>
+</div>
+</div>
+<!-- COMPLAINT PAGE -->
+<div id="complaint" class="page">
+    <h2>Register Complaint</h2>
+<div class="card">
+    <input id="cName" placeholder="Your Name">
+    <select id="cType" required>
+        <option value=""disabled selected hidden>Complaint Type</option>
+        <option>Bus Late</option>
+        <option>Bus Did Not Stop</option>
+        <option>Conductor Misbehaviour</option>
+        <option>Overcrowd / Ticket Issue</option>
+        <option>Other</option>
+    </select>
+    <input id="cBus" placeholder="Bus Number / Route">
+    <textarea id="cDesc" placeholder="Describe your complaint"></textarea>
+    <button onclick="addComplaint()">Submit Complaint</button>
+    <p id="complaintMsg"></p>
+</div>
+</div>
+<!-- STUDENT DASHBOARD -->
+<div id="dashboard" class="page">
+    <h2>Student Dashboard</h2>
+
+    <div class="card">
+        <h3>View My Details</h3>
+
+        <input id="dashboardName" placeholder="Enter Student Name">
+
+        <button onclick="loadStudentDashboard()">
+            View Dashboard
+        </button>
+
+        <div id="dashboardPass"></div>
+
+        <div id="dashboardComplaints"></div>
+    </div>
+</div>
+<!-- ADMIN PAGE -->
+<div id="admin" class="page">
+    <h2>Admin Dashboard</h2>
+<div class="card">
+    <h3>Concession Requests</h3>
+    <div id="appList"></div>
+</div>
+<div class="card">
+    <h3>Complaints</h3>
+    <div id="compList"></div>
+</div>
+<div class="card">
+    <h3>Registered Students</h3>
+    <div id="studentList"></div>
+</div>
+</div>
+<script>
+function showPage(id) {
+    document.querySelectorAll('.page').forEach(function(page) {
+        page.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+
+    // Clear Track Status form when opening another page
+    if (id !== 'track') {
+        document.getElementById('trackName').value = "";
+        document.getElementById('trackResult').innerHTML = "";
+    }
+    if (id !== 'register') {
+    document.getElementById('registerMsg').innerText = "";
+}
+if (id !== 'register') {
+    document.getElementById('regName').value = "";
+    document.getElementById('regCollege').value = "";
+    document.getElementById('regPhone').value = "";
+    document.getElementById('regEmail').value = "";
+}
+
+if (id !== 'apply') {
+    document.getElementById('applyMsg').innerText = "";
+}
+if (id !== 'apply') {
+    document.getElementById('sName').value = "";
+    document.getElementById('sCollege').value = "";
+    document.getElementById('sFrom').value = "";
+    document.getElementById('sTo').value = "";
+}
+
+if (id !== 'complaint') {
+    document.getElementById('complaintMsg').innerText = "";
+}
+if (id !== 'complaint') {
+    document.getElementById('cName').value = "";
+    document.getElementById('cType').selectedIndex = 0;
+    document.getElementById('cBus').value = "";
+    document.getElementById('cDesc').value = "";
+}
+
+if (id !== 'dashboard') {
+    document.getElementById('dashboardName').value = "";
+    document.getElementById('dashboardPass').innerHTML = "";
+    document.getElementById('dashboardComplaints').innerHTML = "";
+}
+    if (id === 'admin') {
+        loadAdmin();
+    }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html> 
+>>>>>>> 52ebb8c0daac9c8d02f93fdd6a854ee55ce01565

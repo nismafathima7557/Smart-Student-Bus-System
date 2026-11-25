@@ -12,11 +12,18 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+<<<<<<< HEAD
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.6",
     "dotenv": "^16.4.5",
     "express": "^4.22.3",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.9.5"
+=======
+  "cors": "^2.8.5",
+  "dotenv": "^16.4.5",
+  "express": "^4.21.2",
+  "mongoose": "^8.9.5"
+>>>>>>> 52ebb8c0daac9c8d02f93fdd6a854ee55ce01565
   }
 }

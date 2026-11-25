@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* =====================================
    GENERAL SETTINGS
 ===================================== */
@@ -172,11 +173,99 @@ label {
     margin-bottom: 6px;
     font-weight: bold;
     color: #333;
+=======
+/* General Settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fb;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background-color: #123c69;
+  color: white;
+  text-align: center;
+  padding: 25px 15px;
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 15px;
+}
+
+/* Navigation */
+nav {
+  background-color: #1e5a91;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+}
+
+nav button {
+  background-color: white;
+  color: #123c69;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav button:hover {
+  background-color: #dceeff;
+}
+
+/* Main Container */
+.container {
+  width: 90%;
+  max-width: 850px;
+  margin: 25px auto;
+}
+
+/* Page Sections */
+.page {
+  display: none;
+  background-color: white;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.page.active {
+  display: block;
+}
+
+.page h2 {
+  color: #123c69;
+  margin-bottom: 18px;
+}
+
+/* Forms */
+form {
+  width: 100%;
+>>>>>>> 52ebb8c0daac9c8d02f93fdd6a854ee55ce01565
 }
 
 input,
 select,
 textarea {
+<<<<<<< HEAD
     width: 100%;
     padding: 12px;
     border: 1px solid #cbd5e1;
@@ -491,3 +580,150 @@ p {
         display: none;
     }
 }
+=======
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+}
+
+.page button {
+  background-color: #1e5a91;
+  color: white;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.page button:hover {
+  background-color: #123c69;
+}
+
+/* Messages */
+#registerMsg,
+#complaintMsg,
+#applyMsg,
+#statusMsg {
+  margin-top: 15px;
+  color: green;
+  font-weight: bold;
+}
+
+/* Admin Sections */
+#adminList,
+#adminComplaints,
+#studentList {
+  margin-top: 15px;
+}
+
+#adminList p,
+#adminComplaints p,
+#studentList p {
+  background-color: #f1f6fc;
+  padding: 15px;
+  margin: 10px 0;
+  border-left: 4px solid #1e5a91;
+  border-radius: 5px;
+}
+
+/* Admin Action Buttons */
+#adminList button,
+#adminComplaints button {
+  margin-top: 8px;
+  margin-right: 5px;
+  background-color: #218838;
+}
+
+#adminComplaints button:hover {
+  background-color: #176b2b;
+}
+
+/* Footer */
+footer {
+  background-color: #123c69;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+/* Mobile Responsive Design */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 22px;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  nav button {
+    width: 100%;
+  }
+
+  .container {
+    width: 94%;
+  }
+
+  .page {
+    padding: 18px;
+  }
+}
+/* DIGITAL CONCESSION CARD */
+
+.digital-pass {
+    width: 350px;
+    max-width: 100%;
+    margin: 20px auto;
+    padding: 22px;
+    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    color: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 2px solid #bbdefb;
+}
+
+.digital-pass h3 {
+    text-align: center;
+    color: white;
+    border-bottom: 2px solid white;
+    padding-bottom: 12px;
+}
+
+.digital-pass p {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.digital-pass #qrcode {
+    text-align: center;
+    margin-top: 15px;
+}
+#cType {
+    background-color: white !important ;
+    color: black;
+}
+
+#cType:invalid { 
+     color: #999 !important;
+}
+
+#cType option {
+    color: black;
+}
+
+>>>>>>> 52ebb8c0daac9c8d02f93fdd6a854ee55ce01565
