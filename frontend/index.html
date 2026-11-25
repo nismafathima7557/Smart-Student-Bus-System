@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Student Bus System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Smart Student Bus System</h1>
+    <p>Digital Bus Concession and Complaint Management</p>
+</header>
+
+<nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('register')">Student Register</button>
+    <button onclick="showPage('studentLogin')">Student Login</button>
+    <button onclick="showPage('collegeRegister')">College Register</button>
+    <button onclick="showPage('collegeLogin')">College Login</button>
+    <button onclick="showPage('adminLogin')">Admin Login</button>
+    <button onclick="logout()">Logout</button>
+</nav>
+
+<main>
+
+<section id="home" class="page active">
+    <h2>Welcome to Smart Student Bus System</h2>
+    <p>A digital platform for student bus concession applications, verification and complaint management.</p>
+
+    <div class="card">
+        <h3>Student Services</h3>
+        <button onclick="showPage('register')">Register</button>
+        <button onclick="showPage('studentLogin')">Student Login</button>
+    </div>
+
+    <div class="card">
+        <h3>College Services</h3>
+        <button onclick="showPage('collegeRegister')">College Register</button>
+        <button onclick="showPage('collegeLogin')">College Login</button>
+    </div>
+
+    <div class="card">
+        <h3>Admin Services</h3>
+        <button onclick="showPage('adminLogin')">Admin Login</button>
+    </div>
+</section>
+
+<!-- STUDENT REGISTRATION -->
+<section id="register" class="page">
+    <h2>Student Registration</h2>
+
+    <form onsubmit="registerStudent(event)">
+        <label>Student Name</label>
+        <input name="name" type="text" required>
+
+        <label>College Name</label>
+        <input name="college" type="text" required>
+
+        <label>Admission Number</label>
+        <input name="admissionNumber" type="text" required>
+
+        <label>Phone Number</label>
+        <input name="phone" type="tel" required>
+
+        <label>Email</label>
+        <input name="email" type="email" required>
+
+        <label>Password</label>
+        <input name="password" type="password" minlength="8" required>
+
+        <button type="submit">Register</button>
+        <p id="registerMsg"></p>
+    </form>
+</section>
+
+<!-- STUDENT LOGIN -->
+<section id="studentLogin" class="page">
+    <h2>Student Login</h2>
+
+    <form onsubmit="loginStudent(event)" autocomplete="off" data-login-form>
+        <label>Email</label>
+        <input name="email" type="email"
+               autocomplete="off" readonly
+               onfocus="this.removeAttribute('readonly')" required>
+
+        <label>Password</label>
+        <input name="password" type="password"
+               autocomplete="off" readonly
+               onfocus="this.removeAttribute('readonly')" required>
+
+        <button type="submit">Login</button>
+        <p id="studentLoginMsg"></p>
+    </form>
+</section>
+
+<!-- STUDENT DASHBOARD -->
+<section id="studentDashboard" class="page">
+    <h2>Student Dashboard</h2>
+
+    <div class="card">
+        <h3>Student Profile</h3>
+        <div id="studentDetails"></div>
+    </div>
+
+    <div class="card">
+        <h3>Apply for Bus Concession</h3>
+        <button onclick="showPage('apply')">Apply Concession</button>
+    </div>
+
+    <div class="card">
+        <h3>Application Status Tracker</h3>
+        <button onclick="showPage('status')">Track Application</button>
+        <div id="dashboardApplications"></div>
+    </div>
+
+    <div class="card">
+        <h3>Digital Bus Pass</h3>
+        <div id="dashboardPass"></div>
+        <div id="passDetails"></div>
+    </div>
+
+    <div class="card">
+        <h3>Complaint Management</h3>
+        <button onclick="showPage('complaint')">Register Complaint</button>
+        <div id="dashboardComplaints"></div>
+    </div>
+</section>
+
+<!-- APPLY CONCESSION -->
+<section id="apply" class="page">
+    <h2>Apply for Bus Concession</h2>
+
+    <form onsubmit="applyConcession(event)">
+        <label>Starting Point</label>
+        <input name="from" type="text" required>
+
+        <label>Destination</label>
+        <input name="to" type="text" required>
+
+        <button type="submit">Submit Application</button>
+        <p id="applyMsg"></p>
+    </form>
+
+    <button onclick="showPage('studentDashboard')">Back to Dashboard</button>
+</section>
+
+<!-- APPLICATION STATUS -->
+<section id="status" class="page">
+    <h2>Application Status Tracker</h2>
+
+    <div id="statusList"></div>
+
+    <button onclick="loadStudentApplications()">Refresh Status</button>
+    <button onclick="showPage('studentDashboard')">Back to Dashboard</button>
+</section>
+
+<!-- COMPLAINT -->
+<section id="complaint" class="page">
+    <h2>Register Complaint</h2>
+
+    <form onsubmit="addComplaint(event)">
+        <label>Complaint Type</label>
+        <select name="type" required>
+            <option value="">Select Complaint Type</option>
+            <option value="Bus Delay">Bus Delay</option>
+            <option value="Staff Behaviour">Staff Behaviour</option>
+            <option value="Bus Condition">Bus Condition</option>
+            <option value="Concession Issue">Concession Issue</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Bus Number / Route</label>
+        <input name="bus" type="text">
+
+        <label>Complaint Description</label>
+        <textarea name="description" required></textarea>
+
+        <button type="submit">Submit Complaint</button>
+        <p id="complaintMsg"></p>
+    </form>
+
+    <button onclick="showPage('studentDashboard')">Back to Dashboard</button>
+</section>
+
+<!-- COLLEGE REGISTRATION -->
+<section id="collegeRegister" class="page">
+    <h2>College Registration</h2>
+
+    <p>Register your college account. Admin approval is required before login.</p>
+
+    <form onsubmit="registerCollege(event)">
+        <label>College Name</label>
+        <input name="name" type="text" required>
+
+        <label>College Email</label>
+        <input name="email" type="email" required>
+
+        <label>Password</label>
+        <input name="password" type="password" minlength="8" required>
+
+        <button type="submit">Register College</button>
+        <p id="collegeRegisterMsg"></p>
+    </form>
+</section>
+
+<!-- COLLEGE LOGIN -->
+<section id="collegeLogin" class="page">
+    <h2>College Login</h2>
+
+    <form onsubmit="loginCollege(event)" autocomplete="off" data-login-form>
+        <label>Email</label>
+        <input name="email" type="email"
+               autocomplete="off" readonly
+               onfocus="this.removeAttribute('readonly')" required>
+
+        <label>Password</label>
+        <input name="password" type="password"
+               autocomplete="off" readonly
+               onfocus="this.removeAttribute('readonly')" required>
+
+        <button type="submit">College Login</button>
+        <p id="collegeLoginMsg"></p>
+    </form>
+</section>
+
+<!-- COLLEGE DASHBOARD -->
+<section id="collegeDashboard" class="page">
+    <h2>College Dashboard</h2>
+
+    <div class="card">
+        <h3>Student Concession Applications</h3>
+        <p>View and verify applications from your college.</p>
+        <div id="collegeApplicationList"></div>
+        <button onclick="loadCollegeApplications()">Refresh Applications</button>
+    </div>
+</section>
+
+<!-- ADMIN LOGIN -->
+<section id="adminLogin" class="page">
+    <h2>Admin Login</h2>
+
+    <form onsubmit="loginAdmin(event)" autocomplete="off" data-login-form>
+        <label>Admin Email</label>
+        <input name="email" type="email"
+               autocomplete="off" readonly
+               onfocus="this.removeAttribute('readonly')" required>
+
+        <label>Admin Password</label>
+        <input name="password" type="password"
+               autocomplete="off" readonly
+               onfocus="this.removeAttribute('readonly')" required>
+
+        <button type="submit">Admin Login</button>
+        <p id="adminLoginMsg"></p>
+    </form>
+</section>
+
+<!-- ADMIN DASHBOARD -->
+<section id="adminDashboard" class="page">
+    <h2>Admin Dashboard</h2>
+
+    <div class="card">
+        <h3>Dashboard Summary</h3>
+        <div id="adminSummary"></div>
+    </div>
+
+    <div class="card">
+        <h3>Manage Students</h3>
+        <div id="studentList"></div>
+    </div>
+
+    <div class="card">
+        <h3>Manage Colleges</h3>
+        <p>Review college registrations and approve or reject them.</p>
+        <div id="collegeList"></div>
+    </div>
+
+    <div class="card">
+        <h3>Manage Applications</h3>
+        <div id="appList"></div>
+    </div>
+
+    <div class="card">
+        <h3>Manage Complaints</h3>
+        <div id="compList"></div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <p>Smart Student Bus System | Digital Bus Concession Management</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

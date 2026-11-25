@@ -1,0 +1,493 @@
+/* =====================================
+   GENERAL SETTINGS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+/* =====================================
+   HEADER
+===================================== */
+
+header {
+    background: linear-gradient(135deg, #123c69, #1769aa);
+    color: white;
+    padding: 22px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 25px;
+}
+
+header p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* =====================================
+   NAVIGATION
+===================================== */
+
+nav {
+    background: #0d2f50;
+    padding: 12px 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+nav button {
+    background: white;
+    color: #123c69;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav button:hover {
+    background: #dcecff;
+    transform: translateY(-2px);
+}
+
+/* =====================================
+   MAIN CONTENT
+===================================== */
+
+main {
+    width: 92%;
+    max-width: 1150px;
+    min-height: 65vh;
+    margin: 30px auto;
+}
+
+/* =====================================
+   PAGE SETTINGS
+===================================== */
+
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================================
+   HEADINGS
+===================================== */
+
+h2 {
+    color: #123c69;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+h3 {
+    color: #24527a;
+    margin-bottom: 12px;
+}
+
+h4 {
+    color: #1769aa;
+}
+
+/* =====================================
+   CARDS
+===================================== */
+
+.card {
+    background: white;
+    padding: 22px;
+    margin-bottom: 22px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5edf5;
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+}
+
+.card p {
+    margin-bottom: 9px;
+}
+
+/* =====================================
+   FORMS
+===================================== */
+
+form {
+    background: white;
+    padding: 24px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 18px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e5edf5;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    background: #fff;
+    outline: none;
+    transition: 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #1769aa;
+    box-shadow: 0 0 0 2px rgba(23, 105, 170, 0.12);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+button {
+    background: #1769aa;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px 3px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0d4f85;
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    background: #999;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =====================================
+   SUCCESS AND ERROR MESSAGES
+===================================== */
+
+#registerMsg,
+#studentLoginMsg,
+#applyMsg,
+#complaintMsg,
+#collegeLoginMsg,
+#adminLoginMsg,
+#collegeRegisterMsg,
+#collegeCreateMsg {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* =====================================
+   DASHBOARD CONTENT
+===================================== */
+
+#studentDetails,
+#dashboardApplications,
+#dashboardPass,
+#dashboardComplaints,
+#statusList,
+#collegeApplicationList,
+#adminSummary,
+#studentList,
+#collegeList,
+#appList,
+#compList {
+    margin-top: 16px;
+}
+
+#dashboardApplications > div,
+#dashboardComplaints > div,
+#collegeApplicationList > div,
+#studentList > div,
+#collegeList > div,
+#appList > div,
+#compList > div,
+#statusList > div {
+    background: #f8fbff;
+    border: 1px solid #dce5ef;
+    border-radius: 8px;
+    padding: 18px;
+    margin-bottom: 14px;
+}
+
+/* =====================================
+   ADMIN DASHBOARD SUMMARY
+===================================== */
+
+#adminSummary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+#adminSummary > div {
+    background: #e6f1ff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #c9def5;
+    margin: 0;
+}
+
+#adminSummary h3 {
+    font-size: 16px;
+}
+
+#adminSummary p {
+    font-size: 25px;
+    font-weight: bold;
+    color: #123c69;
+}
+
+/* =====================================
+   DIGITAL BUS PASS
+===================================== */
+
+#passDetails {
+    background: white;
+    border: 2px solid #1769aa;
+    border-radius: 10px;
+    padding: 22px;
+    margin-top: 18px;
+    max-width: 450px;
+    text-align: center;
+}
+
+#passDetails h2 {
+    font-size: 21px;
+    color: #123c69;
+}
+
+#passDetails p {
+    margin: 9px 0;
+}
+
+#passDetails canvas,
+#passDetails img {
+    display: block;
+    margin: 15px auto;
+}
+
+.digital-pass {
+    padding: 15px;
+}
+
+/* =====================================
+   STATUS DISPLAY
+===================================== */
+
+.status {
+    font-weight: bold;
+    color: #1769aa;
+}
+
+/* =====================================
+   COLLEGE AND ADMIN TEXTAREAS
+===================================== */
+
+#collegeApplicationList textarea,
+#appList textarea,
+#compList textarea {
+    margin-top: 10px;
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer {
+    background: #123c69;
+    color: white;
+    text-align: center;
+    padding: 18px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* =====================================
+   LINKS AND TEXT
+===================================== */
+
+a {
+    color: #1769aa;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 700px) {
+
+    header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 21px;
+    }
+
+    nav {
+        padding: 10px;
+    }
+
+    nav button {
+        flex: 1 1 40%;
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    main {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    h2 {
+        font-size: 21px;
+    }
+
+    form {
+        padding: 17px;
+        width: 100%;
+    }
+
+    .card {
+        padding: 17px;
+    }
+
+    #adminSummary {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #passDetails {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+
+    #adminSummary {
+        grid-template-columns: 1fr;
+    }
+
+    nav button {
+        flex: 1 1 100%;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
+
+/* =====================================
+   PRINT BUS PASS
+===================================== */
+
+@media print {
+
+    body * {
+        visibility: hidden;
+    }
+
+    #printablePass,
+    #printablePass * {
+        visibility: visible;
+    }
+
+    #printablePass {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        max-width: 450px;
+        padding: 20px;
+        border: 2px solid black;
+        background: white;
+        box-shadow: none;
+    }
+
+    #printablePass button {
+        display: none;
+    }
+}
